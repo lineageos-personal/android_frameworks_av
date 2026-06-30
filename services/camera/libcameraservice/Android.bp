@@ -262,6 +262,9 @@ cc_library {
     }) + select(soong_config_variable("camera", "needs_client_info_lib_oplus"), {
         "true": ["-DCAMERA_NEEDS_CLIENT_INFO_LIB_OPLUS"],
         default: [],
+    }) + select(soong_config_variable("cameraservice", "allow_nonincreasing_timestamps"), {
+        any @ value: ["-DALLOW_NONINCREASING_TIMESTAMPS"],
+        default: [],
     }),
 }
 
